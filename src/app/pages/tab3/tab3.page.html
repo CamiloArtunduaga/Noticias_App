@@ -6,7 +6,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen color="dark">
-    <app-noticias [noticias]=" datalocalService.noticias" ></app-noticias>
+<ion-content fullscreen color="dark"> 
+
+    <ion-slides [options]="sliderOpt"
+                *ngIf="datalocalService.noticias.length === 0">
+      <ion-slide>
+        <ion-label>No hay Favoritos</ion-label>
+      </ion-slide>
+    </ion-slides>
+
+    <app-noticias *ngIf="datalocalService.noticias.length > 0" 
+                  [enFavoritos]="true"
+                  [noticias]=" datalocalService.noticias" ></app-noticias>
 
 </ion-content>
